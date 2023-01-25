@@ -1,6 +1,8 @@
 package com.example.basicscodelabmaterial3
 
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -8,6 +10,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.basicscodelabmaterial3.ui.theme.BasicsCodelabMaterial3Theme
@@ -75,8 +78,11 @@ private fun OnboardingScreen(
 @Preview(showBackground = true, widthDp = 320, heightDp = 320)
 @Composable
 fun OnboardingPreview() {
+    val context = LocalContext.current
     BasicsCodelabMaterial3Theme {
-        OnboardingScreen()
+        OnboardingScreen(onContinueClicked = {
+            showToast(context, "Yay!")// Toast.makeText(context, "Yay!", Toast.LENGTH_SHORT).show()
+        })
     }
 }
 
