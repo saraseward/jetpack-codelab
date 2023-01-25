@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -38,7 +40,7 @@ fun MyApp(modifier: Modifier = Modifier) {
         if (showOnboarding) {
             OnboardingScreen(onContinueClicked = { showOnboarding = false })
         } else {
-            Greetings()
+            Greetings(names = List(50) { "$it" })
         }
     }
 }
@@ -92,10 +94,10 @@ fun OnboardingPreview() {
 @Composable
 private fun Greetings(
     modifier: Modifier = Modifier,
-    names: List<String> = listOf("World", "Compose")
+    names: List<String>
 ) {
-    Column(modifier = modifier.padding(vertical = 4.dp)) {
-        for (name in names) {
+    LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
+        items(items = names) { name ->
             Greeting(name = name)
         }
     }
@@ -138,6 +140,6 @@ private fun Greeting(name: String) {
 @Composable
 private fun GreetingsPreview() {
     BasicsCodelabMaterial3Theme {
-        Greetings()
+        Greetings(names = List(30) { "$it" })
     }
 }
