@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BasicsCodelabMaterial3</string>
+
+    <string name="about">About</string>
+    <string name="expand_btn_show_more">Show more</string>
+    <string name="expand_btn_show_less">Show less</string>
+
 </resources>
